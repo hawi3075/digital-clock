@@ -1,36 +1,69 @@
 :root {
-    --bg-color: #f4f4f4;
-    --text-color: #333;
-}
-
-body.dark-mode {
-    --bg-color: #1a1a1a;
-    --text-color: #00ff88;
+    --bg-gradient: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --text-color: #ffffff;
+    --accent-color: #00d2ff;
 }
 
 body {
-    background-color: var(--bg-color);
+    background: var(--bg-gradient);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite; /* Animated background */
     color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: 'Courier New', Courier, monospace;
-    transition: 0.3s;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Background Animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .clock-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px); /* Frosty glass effect */
+    padding: 3rem 5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     text-align: center;
 }
 
 #clock {
-    font-size: 5rem;
-    font-weight: bold;
+    font-size: 7rem;
+    font-weight: 800;
+    letter-spacing: 5px;
+    margin: 10px 0;
+    text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+    font-variant-numeric: tabular-nums; /* Prevents numbers from jumping */
+}
+
+#date {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-color);
 }
 
 #theme-toggle {
-    margin-bottom: 20px;
-    padding: 10px 20px;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 8px 15px;
+    border-radius: 50px;
     cursor: pointer;
+    transition: 0.3s;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+#theme-toggle:hover {
+    background: white;
+    color: #302b63;
 }
