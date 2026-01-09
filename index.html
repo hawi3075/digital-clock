@@ -2,15 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Simple Digital Clock</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Digital Clock</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="clock-container">
         <button id="theme-toggle">Switch Theme</button>
-        <div id="clock">00:00:00</div>
-        <div id="date">Loading date...</div>
+        
+        <div id="clock">00:00<span>:00</span></div>
+        <div id="date">Loading Date...</div>
+        
+        <div class="controls">
+            <button id="reset-btn">Stop Clock</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
