@@ -1,0 +1,36 @@
+:root {
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #00ff88;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    transition: 0.3s;
+}
+
+.clock-container {
+    text-align: center;
+}
+
+#clock {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+#theme-toggle {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
