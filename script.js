@@ -1,27 +1,50 @@
+let clockInterval;
+let isRunning = true;
+
 function updateClock() {
     const now = new Date();
     
-    // Get hours, minutes, and seconds
+    // Format Time
     let h = now.getHours().toString().padStart(2, '0');
     let m = now.getMinutes().toString().padStart(2, '0');
     let s = now.getSeconds().toString().padStart(2, '0');
     
-    // Display the time
-    document.getElementById('clock').textContent = `${h}:${m}:${s}`;
-    
-    // Display the date
+    // Format Date
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    document.getElementById('date').textContent = now.toLocaleDateString(undefined, options);
+    const dateString = now.toLocaleDateString(undefined, options);
+
+    // Update the UI
+    document.getElementById('clock').innerHTML = `${h}:${m}<span>:${s}</span>`;
+    document.getElementById('date').textContent = dateString;
 }
 
-// Update the clock every 1000ms (1 second)
-setInterval(updateClock, 1000);
+// Start the timer
+function start() {
+    clockInterval = setInterval(updateClock, 1000);
+    updateClock();
+}
 
-// Dark Mode Toggle Logic
-const btn = document.getElementById('theme-toggle');
-btn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
+// STOP / RESET Button Logic
+const resetBtn = document.getElementById('reset-btn');
+resetBtn.addEventListener('click', () => {
+    if (isRunning) {
+        clearInterval(clockInterval);
+        document.getElementById('clock').innerHTML = `00:00<span>:00</span>`;
+        resetBtn.textContent = "Start Clock";
+        resetBtn.style.background = "rgba(71, 255, 123, 0.2)"; // Green tint
+    } else {
+        start();
+        resetBtn.textContent = "Stop Clock";
+        resetBtn.style.background = "rgba(255, 71, 71, 0.2)"; // Red tint
+    }
+    isRunning = !isRunning;
 });
 
-// Run once immediately so it doesn't wait 1 second to start
-updateClock();
+// Theme Toggle Logic
+const themeBtn = document.getElementById('theme-toggle');
+themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+});
+
+// Initialize the clock
+start();
