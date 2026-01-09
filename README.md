@@ -25,4 +25,5 @@ Check out the live version here: [Your GitHub Pages Link Here]
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/digital-clock.git](https://github.com/YOUR_USERNAME/digital-clock.git)
+   git clone [https://github.com/hawi3075
+   /digital-clock.git](https://github.com/hawi3075/digital-clock)
